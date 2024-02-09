@@ -1,0 +1,13 @@
+{
+  "name": "MRPT Token",
+  "devDependencies": {
+    "@uniswap/sdk-core": "*",
+    "@uniswap/v3-sdk": "*"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "5.0.0",
+    "@uniswap/v2-periphery": "*",
+    "@uniswap/v3-periphery": "*",
+    "i": "^0.3.7"
+  }
+}

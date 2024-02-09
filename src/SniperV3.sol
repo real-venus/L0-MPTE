@@ -4,7 +4,7 @@ pragma abicoder v2;
 
 import "@uniswap/v3-periphery/contracts/libraries/TransferHelper.sol";
 import "@uniswap/v3-periphery/contracts/interfaces/ISwapRouter.sol";
-import "lib/openzeppelin-contracts/contracts/access/Ownable.sol";
+import "openzeppelin/access/Ownable.sol";
 // import "lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
 contract MRPTSniperV3 is Ownable {

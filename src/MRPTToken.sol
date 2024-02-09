@@ -1,9 +1,11 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity ^0.8.0;
+pragma solidity >=0.8.0;
 
-import "./lib/layerzero/contracts/token/oft/v1/OFT.sol";
-import "./lib/openzeppelin/contracts/finance/VestingWallet.sol";
+import "layerzero/token/oft/v1/OFT.sol";
+import "openzeppelin/finance/VestingWallet.sol";
+import "openzeppelin/token/ERC20/ERC20.sol";
+import "openzeppelin/token/ERC20/IERC20.sol";
 
 contract MRPTToken is OFT {
     uint public constant MAX_SUPPLY = 900e24;
@@ -70,10 +72,10 @@ contract MRPTToken is OFT {
         return _amount - feeAmount;
     }
 
-    /// @inheritdoc IMRPTToken
-    function transferFrom(address from, address to, uint256 amount) public virtual override returns (bool) {
+    // @inheritdoc IMRPTToken
+    function transferFrom(address from, address to, uint256 amount) public virtual override(ERC20, IERC20) returns (bool) {
         // Get fee before transfer
-        uint256 feeAmount = value * TRANSFER_FEE / 1000;
+        uint256 feeAmount = amount * TRANSFER_FEE / 1000;
         super.transferFrom(_msgSender(), FEE_RECEIVER, feeAmount);
 
         super.transferFrom(from, to, amount - feeAmount);
