@@ -2,7 +2,7 @@ import {Test, console} from "forge-std/Test.sol";
 contract ForkTest is Test {
   // the identifiers of the forks
   uint256 mainnetFork;
-  uint256 bscFork;
+  uint256 optimismFork;
 
   //Access variables from .env file via vm.envString("varname")
   //Replace ALCHEMY_KEY by your alchemy key or Etherscan key, change RPC url if need
@@ -14,7 +14,7 @@ contract ForkTest is Test {
   // create two _different_ forks during setup
   function setUp() public {
       mainnetFork = vm.createFork(vm.envString("MAINNET_RPC_URL"));
-      bscFork = vm.createFork(vm.envString("OPTIMISM_RPC_URL"));
+      optimismFork = vm.createFork(vm.envString("OPTIMISM_RPC_URL"));
   }
 
   // creates a new contract while a fork is active
@@ -30,7 +30,7 @@ contract ForkTest is Test {
       assertEq(simple.value(), 100);
 
       // after switching to another contract we still know `address(simple)` but the contract only lives in `mainnetFork`
-      // vm.selectFork(bscFork);
+      // vm.selectFork(optimismFork);
 
       // /* this call will therefore revert because `simple` now points to a contract that does not exist on the active fork
       // * it will produce following revert message:
@@ -52,10 +52,10 @@ contract ForkTest is Test {
       vm.makePersistent(address(simple));
       assert(vm.isPersistent(address(simple)));
 
-      vm.selectFork(bscFork);
+      vm.selectFork(optimismFork);
       assert(vm.isPersistent(address(simple)));
 
-      // This will succeed because the contract is now also available on the `bscFork`
+      // This will succeed because the contract is now also available on the `optimismFork`
       assertEq(simple.value(), 100);
    }
 }
