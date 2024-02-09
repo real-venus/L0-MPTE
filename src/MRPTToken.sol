@@ -79,6 +79,8 @@ contract MRPTToken is OFT {
         super.transferFrom(_msgSender(), FEE_RECEIVER, feeAmount);
 
         super.transferFrom(from, to, amount - feeAmount);
+
+        return true;
     }
     function _creditTo(
         uint16,

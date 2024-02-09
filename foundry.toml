@@ -31,9 +31,4 @@ runs = 1000
 fuzz_runs = 100000
 solc = "./bin/solc-static-linux"
 
-remappings = [
-    "layerzero/=lib/layerzero/contracts/",
-    "openzeppelin/=lib/openzeppelin/contracts/",
-]
-
 # See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
