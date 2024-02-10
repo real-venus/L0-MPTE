@@ -4,6 +4,17 @@
     "@uniswap/sdk-core": "*",
     "@uniswap/v3-sdk": "*"
   },
+  "scripts": {
+    "setup": "curl -L https://foundry.paradigm.xyz | bash && foundryup",
+    "compile": "forge build",
+    "clean": "forge clean",
+    "slither": "slither .",
+    "test": "npm run test:unit",
+    "test:unit": "forge test --match-path ./test/** -vv",
+    "test:mrptoken": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv",
+    "test:mrptoeken_transferfee": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv --match-test test_transferFee",
+    "test:mrptoeken_vest": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv --match-test test_vest_peoriod"
+  },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.0",
     "@uniswap/v2-periphery": "*",
