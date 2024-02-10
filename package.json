@@ -13,7 +13,11 @@
     "test:unit": "forge test --match-path ./test/** -vv",
     "test:mrptoken": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv",
     "test:mrptoeken_transferfee": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv --match-test test_transferFee",
-    "test:mrptoeken_vest": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv --match-test test_vest_peoriod"
+    "test:mrptoeken_vest": "forge test --match-path ./test/MRPTTokenTest.t.sol -vv --match-test test_vest_peoriod",
+    "test:sniperv2": "forge test --match-path ./test/Sniperv2Test.t.sol -vv",
+    "test:sniperv2_createliquidity": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_createAndAddLiquidity",
+    "test:sniperv2_buy": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_buyMRPT",
+    "test:sniperv2_withdraw": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_WithdrawToken"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.0",

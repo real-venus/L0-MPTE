@@ -5,6 +5,9 @@ import "openzeppelin/access/Ownable.sol";
 import "openzeppelin/token/ERC20/IERC20.sol";
 import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 
+import {console} from "forge-std/console.sol";
+import {console2} from "forge-std/console2.sol";
+
 contract MRPTSniperV2 is Ownable {
     address public routerAddress;
     address public wethAddress;
@@ -16,15 +19,16 @@ contract MRPTSniperV2 is Ownable {
         mrptAddress = _mrptAddress;
     }
 
-    function buyToken(uint256 amount) external payable onlyOwner {
+    function buyToken(uint256 amount) external payable {
         // Get the Uniswap router contract
         IUniswapV2Router02 router = IUniswapV2Router02(routerAddress);
 
-        // Get the weth contract
-        IERC20 weth = IERC20(wethAddress);
 
-        // Approve the router to spend weth
-        weth.approve(routerAddress, amount);
+        // // Get the weth contract
+        // IERC20 weth = IERC20(wethAddress);
+
+        // // Approve the router to spend weth
+        // weth.approve(routerAddress, amount);
 
         // Create the path for the swap
         address[] memory path = new address[](2);

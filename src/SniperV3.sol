@@ -35,7 +35,7 @@ contract MRPTSniperV3 is Ownable {
     /// function to succeed.
     /// @param amountIn The exact amount of WETH9 that will be swapped for MRPT.
     /// @return amountOut The amount of MRPT received.
-    function buyToken(uint256 amountIn) external onlyOwner returns (uint256 amountOut) {
+    function buyToken(uint256 amountIn) external returns (uint256 amountOut) {
         // msg.sender must approve this contract
         address tokenIn = wethAddress;
         address tokenOut = mrptAddress;

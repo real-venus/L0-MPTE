@@ -1,3 +1,6 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+pragma solidity 0.8.20;
+
 /**
  * @title VestingWallet
  * @dev This contract handles the vesting of Eth and ERC20 tokens for a given beneficiary. Custody of multiple tokens
