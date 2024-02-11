@@ -22,15 +22,9 @@ contract MRPTFactory {
             revert MRPTFactoryEmptyBytecode();
         }
 
-        console.log("Deploy test");
-
         assembly {
             addr := create2(amount, add(bytecode, 0x20), mload(bytecode), salt)
         }
-
-        console.log("after create");
-
-        console.log("deployed address", addr);
 
         if (addr == address(0)) {
             revert MRPTFactoryFailedDeployment();
