@@ -17,7 +17,10 @@
     "test:sniperv2": "forge test --match-path ./test/Sniperv2Test.t.sol -vv",
     "test:sniperv2_createliquidity": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_createAndAddLiquidity",
     "test:sniperv2_buy": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_buyMRPT",
-    "test:sniperv2_withdraw": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_WithdrawToken"
+    "test:sniperv2_withdraw": "forge test --match-path ./test/Sniperv2Test.t.sol -vvvvv --match-test test_WithdrawToken",
+    "test:deploy": "forge test --match-path ./test/MRPTFactoryTest.t.sol -vv",
+    "test:deploy_sepolia": "forge test --match-path ./test/MRPTFactoryTest.t.sol -vvvvv --match-test testSepoliaDeploy",
+    "deploy": "forge create --private-key YOUR-PRIVATE-KEY --rpc-url https://eth-sepolia.g.alchemy.com/v2/YOUR-API-KEY --constructor-args 0 0x5f56eEBF7b6cC82750d41aC85376c9b2491e2F2e 0x5f56eEBF7b6cC82750d41aC85376c9b2491e2F2e 0x5f56eEBF7b6cC82750d41aC85376c9b2491e2F2e 0x5f56eEBF7b6cC82750d41aC85376c9b2491e2F2e 0x5f56eEBF7b6cC82750d41aC85376c9b2491e2F2e 0x66A71Dcef29A0fFBDBE3c6a460a3B5BC225Cd675 --verify --etherscan-api-key YOUR-ETHERSCAN-API-KEY src/MRPTToken.sol:MRPTToken"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.0",
