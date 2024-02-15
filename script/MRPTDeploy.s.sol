@@ -8,6 +8,10 @@ import "forge-std/console2.sol";
 
 import "src/MRPTToken.sol";
 
+interface IMRPT {
+    function transferOwnership(address) external;
+}
+
 contract MRPTDeploy is Script {
 
     MRPTFactory factory;
@@ -22,20 +26,23 @@ contract MRPTDeploy is Script {
         address team = vm.envAddress("TEAM");
         address advisor = vm.envAddress("ADVISOR");
         address lzEndPoint = vm.envAddress("LZENDPOINT");
+        address owner = vm.envAddress("TOKEN_OWNER");
+        uint256 start_timestamp = vm.envUint("START_TIMESTAMP");
+
         vm.startBroadcast(deployerPrivateKey);
 
         factory = new MRPTFactory();
      
-        bytes32 salt = keccak256(abi.encode("MRPTToken", address(this)));
+        bytes32 salt = keccak256(abi.encode("MRPTToken"));
 
-        bytes memory creationCode = abi.encodePacked(type(MRPTToken).creationCode, abi.encode(uint64(0), ecosystem, marketing, stakingreward, team, advisor, lzEndPoint, "Marpto", "MRPT"));
+        bytes memory creationCode = abi.encodePacked(type(MRPTToken).creationCode, abi.encode(uint64(start_timestamp), ecosystem, marketing, stakingreward, team, advisor, lzEndPoint, "Marpto", "MRPT"));
 
         address computedAddress = factory.computeAddress(salt, keccak256(creationCode));
 
         console.log("computed MRPT Token Address");
         console.log(computedAddress);
 
-        address deployedAddress = factory.deploy(0, salt , creationCode);
+        address deployedAddress = factory.deploy(owner, 0, salt , creationCode);
 
         console.log("deployed MRPT Token Address");
         console.log(deployedAddress);

@@ -31,8 +31,10 @@ contract MRPTFactoryTest is Test {
 
     function testSepoliaDeploy() public {
 
-        vm.selectFork(sepoliaFork);
-        assertEq(vm.activeFork(), sepoliaFork);
+        vm.selectFork(mainnetFork);
+        assertEq(vm.activeFork(), mainnetFork);
+
+        vm.rollFork(19_196_173);
 
         uint256 deployerPrivateKey = vm.envUint("PRIVATE_KEY");
         address ecosystem = vm.envAddress("ECOSYSTEM");
@@ -41,6 +43,8 @@ contract MRPTFactoryTest is Test {
         address team = vm.envAddress("TEAM");
         address advisor = vm.envAddress("ADVISOR");
         address lzEndPoint = vm.envAddress("LZENDPOINT");
+        uint256 start_timestamp = vm.envUint("START_TIMESTAMP");
+        address owner = vm.envAddress("TOKEN_OWNER");
 
         factory = new MRPTFactory();
 
@@ -49,11 +53,11 @@ contract MRPTFactoryTest is Test {
         
         bytes32 salt = keccak256(abi.encode("MRPTToken", address(this)));
 
-        bytes memory creationCode = abi.encodePacked(type(MRPTToken).creationCode, abi.encode(uint64(0), ecosystem, marketing, stakingreward, team, advisor, lzEndPoint, "Marpto", "MRPT"));
+        bytes memory creationCode = abi.encodePacked(type(MRPTToken).creationCode, abi.encode(uint64(start_timestamp), ecosystem, marketing, stakingreward, team, advisor, lzEndPoint, "Marpto", "MRPT"));
 
         address computedAddress = factory.computeAddress(salt, keccak256(creationCode));
 
-        address deployedAddress = factory.deploy(0, salt , creationCode);
+        address deployedAddress = factory.deploy(owner, 0, salt , creationCode);
 
         vm.stopPrank();
 
@@ -72,6 +76,7 @@ contract MRPTFactoryTest is Test {
         address team = vm.envAddress("TEAM");
         address advisor = vm.envAddress("ADVISOR");
         address lzEndPoint = vm.envAddress("LZENDPOINT");
+        address owner = vm.envAddress("TOKEN_OWNER");
 
         factory = new MRPTFactory();
 
@@ -84,7 +89,7 @@ contract MRPTFactoryTest is Test {
 
         address computedAddress = factory.computeAddress(salt, keccak256(creationCode));
 
-        address deployedAddress = factory.deploy(0, salt , creationCode);
+        address deployedAddress = factory.deploy(owner, 0, salt , creationCode);
 
         vm.stopPrank();
 

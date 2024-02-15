@@ -65,7 +65,9 @@ contract MRPTTokenTest is Test {
         // console.log("----vestedAmount----");
         // console.log(IVestingWallet(mrptToken.advisorsAddr()).vestedAmount(address(mrptToken), uint64(block.timestamp)));
 
-        mrptToken = new MockMRPTToken(uint64(block.timestamp), ecoSystem, marketing, stakingRewards, team, advisors, _lzEndpoint);
+        uint256 start_timestamp = vm.envUint("START_TIMESTAMP");
+
+        mrptToken = new MockMRPTToken(uint64(start_timestamp), ecoSystem, marketing, stakingRewards, team, advisors, _lzEndpoint);
 
         assertEq(IVestingWallet(mrptToken.ecoSystemAddr()).beneficiary(), ecoSystem);
         assertEq(IVestingWallet(mrptToken.ecoSystemAddr()).duration(), 20 * 30 days);
@@ -91,8 +93,8 @@ contract MRPTTokenTest is Test {
 
         assertEq(mrptToken.balanceOf(ecoSystem), 0);
 
-        vm.warp(block.timestamp + 9 * 30 days + 1 * 30 days);
-        console.log(IVestingWallet(mrptToken.ecoSystemAddr()).vestedAmount(address(mrptToken), uint64(block.timestamp)));
+        vm.warp(start_timestamp + 9 * 30 days + 1 * 30 days);
+        // console.log(IVestingWallet(mrptToken.ecoSystemAddr()).vestedAmount(address(mrptToken), uint64(start_timestamp + 9 * 30 days + 1 * 30 days)));
         // after vesting period, 20% can be released
         IVestingWallet(mrptToken.ecoSystemAddr()).release(address(mrptToken));
 
