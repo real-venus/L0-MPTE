@@ -22,7 +22,8 @@
     "test:deploy_sepolia": "forge test --match-path ./test/MRPTFactoryTest.t.sol -vvvvv --match-test testSepoliaDeploy",
     "deploy": "forge create --private-key YOUR-PRIVATE-KEY --rpc-url ${SEPOLIA_RPC_URL} --constructor-args $START_TIME_STAMP $ECOSYSTEM $MARKETING $STAKING_REWARD $TEAM $ADVISOR $LZPOINT --verify --etherscan-api-key YOUR-ETHERSCAN-API-KEY src/MRPTToken.sol:MRPTToken",
     "deployToSepolia": "forge script script/MRPTDeploy.s.sol:MRPTDeploy --broadcast --verify src/MRPTToken.sol:MRPTToken --rpc-url https://eth-sepolia.g.alchemy.com/v2/dF3pLDZtI7_HZv7dbnWOIWaLTdy2rKTl -vv",
-    "deployToEthereum": "forge script script/MRPTDeploy.s.sol:MRPTDeploy --broadcast --verify src/MRPTToken.sol:MRPTToken --rpc-url $ETHEREUM-RPC-URL -vv"
+    "deployToEthereum": "forge script script/MRPTDeploy.s.sol:MRPTDeploy --broadcast --verify src/MRPTToken.sol:MRPTToken --rpc-url $ETHEREUM-RPC-URL -vv",
+    "deployToMumbai": "forge script script/MRPTDeploy.s.sol:MRPTDeploy --broadcast --verify src/MRPTToken.sol:MRPTToken --rpc-url $MUMBAI-RPC-URL -vv"
   },
   "dependencies": {
     "@openzeppelin/contracts": "5.0.0",
