@@ -11,10 +11,17 @@ out = "out"
 libs = ["lib", "node_modules"]
 
 [rpc_endpoints]
+mumbai = "${MUMBAI_RPC_URL}"
 sepolia = "${SEPOLIA_RPC_URL}"
+ethereum = "${MAINNET_RPC_URL}"
+bsc = "${BSC_RPC_URL}"
 
 [etherscan]
+mumbai = { key = "${MUMBAISCAN_API_KEY}", url = "https://api-testnet.polygonscan.com/api" }
 sepolia = { key = "${ETHERSCAN_API_KEY}" }
+ethereum = { key = "${ETHERSCAN_API_KEY}" }
+bsc = { key = "${BSCSCAN_API_KEY}", url = "https://api.bscscan.com/api" }
+gnosis = { key = "${GNOSIS_ETHERSCAN_API_KEY}", url = "https://blockscout.com/poa/xdai/api" }
 
 [profile.default.fuzz]
 runs = 100

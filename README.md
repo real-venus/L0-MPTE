@@ -40,3 +40,13 @@ $ forge fmt
 ```shell
 $ forge snapshot
 ```
+
+### Live Address
+
+#### Ethereum
+
+https://etherscan.io/address/0xcc75e092295254ada5c4562ef425b81fb98f3d72
+
+#### Binance
+
+https://bscscan.com/address/0xe9A19a356ef9FeC0fF87710E3f86eFcd43DcF275
